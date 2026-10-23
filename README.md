@@ -1,6 +1,6 @@
-# __NAME__
+# terraform-null-naming
 
-__DESCRIPTION__
+Renders a context object into resource names, AWS tags and GCP labels
 
 ## Opinions
 
@@ -10,7 +10,7 @@ __DESCRIPTION__
 
 ```hcl
 module "this" {
-  source = "git::https://github.com/Olensys/__NAME__.git?ref=v1.0.0"
+  source = "git::https://github.com/Olensys/terraform-null-naming.git?ref=v1.0.0"
 
   name = "example"
   context = {
