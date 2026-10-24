@@ -31,6 +31,26 @@ module "naming" {
 # module.naming.name, .name_prefix, .tags, .labels
 ```
 
+## Use with library modules
+
+Render the naming module once and pass its outputs to library modules. `labels` are already GCP-safe (lowercase, `[a-z0-9_-]`, at most 63 characters), so they can be passed to Google modules unchanged.
+
+```hcl
+module "naming" {
+  source  = "git::https://github.com/Olensys/terraform-null-naming.git?ref=v1.0.0"
+  context = var.context
+}
+
+module "bucket" {
+  source  = "git::https://github.com/Olensys/terraform-aws-s3-bucket.git?ref=v1.1.0"
+  name    = "assets"
+  context = var.context
+  tags    = module.naming.tags # Google modules: labels = module.naming.labels
+}
+```
+
+Caller `tags`/`labels` win over `context.extra_tags`, which every module applies as a shared baseline.
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
