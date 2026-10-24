@@ -1,7 +1,7 @@
 name: terraform-null-naming
 cloud: common          # aws | google | common
 tier: capability          # primitive | capability | blueprint
-maturity: experimental    # experimental | stable | deprecated
+maturity: stable    # experimental | stable | deprecated
 description: Renders a context object into resource names, AWS tags and GCP labels
 owners: [platform]
 upstream: null
